@@ -4,7 +4,7 @@ var numberToDollars = (function(){
     'use strict';
     function stringifySingle(single){
         var singles = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-        var num = parseInt(single);
+        var num = parseInt(single, 10);
         return singles[num];
     }
 
@@ -18,11 +18,11 @@ var numberToDollars = (function(){
 
         if(ten.length > 1){
             // get ten value
-            tenNum = parseInt(ten.charAt(0));
+            tenNum = parseInt(ten.charAt(0), 10);
             if(tenNum === 1){
                 isTeen = true;
                 // get teen value
-                result = teens[parseInt(ten.charAt(1))];
+                result = teens[parseInt(ten.charAt(1), 10)];
             } else if(tenNum > 1){
                 // get tens value
                 result = tens[tenNum - 2];
@@ -64,7 +64,7 @@ var numberToDollars = (function(){
 
     function numberToDollars(num){
         var numString, numParts, whole, decimal;
-        var largeGroups = ['thousand', 'million', 'billion', 'trillion', 'quadrillion', 'quintillion'];
+        var largeGroups = ['thousand', 'million', 'billion', 'trillion', 'quadrillion'];
         var wholeGroups = [];
         var format = '{whole} and {decimal}/100 dollars';
         var wholeString = '';
